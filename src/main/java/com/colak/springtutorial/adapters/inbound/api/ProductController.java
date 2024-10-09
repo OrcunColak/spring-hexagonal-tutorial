@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// The in adapter serves as the entry point to interact with the domain logic.
 @RestController
 @RequestMapping("/api/products")
 @RequiredArgsConstructor

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+// The out adapter is responsible for the implementation of the persistence logic.
 @Component
 @RequiredArgsConstructor
 public class ProductRepositoryAdapter implements ProductRepositoryPort {
