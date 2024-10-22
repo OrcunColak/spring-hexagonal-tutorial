@@ -1,7 +1,7 @@
 package com.colak.springtutorial.application.service;
 
 import com.colak.springtutorial.domain.model.Product;
-import com.colak.springtutorial.domain.port.in.ProductUseCase;
+import com.colak.springtutorial.domain.port.in.ProductServicePort;
 import com.colak.springtutorial.domain.port.out.ProductRepositoryPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 // the core logic.
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl implements ProductUseCase {
+public class ProductServiceAdapter implements ProductServicePort {
 
     // ProductService relies on the ProductRepository port, which ensures that the domain logic remains independent from
     // database implementations.
