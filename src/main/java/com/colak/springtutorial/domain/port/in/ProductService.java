@@ -4,7 +4,8 @@ import com.colak.springtutorial.domain.model.Product;
 
 import java.util.List;
 
-public interface ProductServicePort {
+public interface ProductService {
+
     List<Product> getAllProducts();
     Product getProductById(Long id);
     Product createProduct(Product product);

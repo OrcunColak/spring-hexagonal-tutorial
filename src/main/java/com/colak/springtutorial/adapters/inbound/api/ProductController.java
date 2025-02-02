@@ -1,7 +1,7 @@
 package com.colak.springtutorial.adapters.inbound.api;
 
 import com.colak.springtutorial.domain.model.Product;
-import com.colak.springtutorial.domain.port.in.ProductServicePort;
+import com.colak.springtutorial.domain.port.in.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,22 +14,22 @@ import java.util.List;
 public class ProductController {
 
     // Adapter uses port
-    private final ProductServicePort productServicePort;
+    private final ProductService productService;
 
 
     @GetMapping
     public List<Product> getAllProducts() {
-        return productServicePort.getAllProducts();
+        return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable Long id) {
-        return productServicePort.getProductById(id);
+        return productService.getProductById(id);
     }
 
     @PostMapping
     public Product createProduct(@RequestBody Product product) {
-        return productServicePort.createProduct(product);
+        return productService.createProduct(product);
     }
 }
 

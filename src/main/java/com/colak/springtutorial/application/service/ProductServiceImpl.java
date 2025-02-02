@@ -1,8 +1,8 @@
 package com.colak.springtutorial.application.service;
 
 import com.colak.springtutorial.domain.model.Product;
-import com.colak.springtutorial.domain.port.in.ProductServicePort;
-import com.colak.springtutorial.domain.port.out.ProductRepositoryPort;
+import com.colak.springtutorial.domain.port.in.ProductService;
+import com.colak.springtutorial.domain.port.out.ProductRepositoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,25 +12,25 @@ import java.util.List;
 // the core logic.
 @Service
 @RequiredArgsConstructor
-public class ProductServiceAdapter implements ProductServicePort {
+public class ProductServiceImpl implements ProductService {
 
-    // ProductService relies on the ProductRepository port, which ensures that the domain logic remains independent from
+    // ProductService relies on the ProductRepositoryService , which ensures that the domain logic remains independent of
     // database implementations.
-    private final ProductRepositoryPort productRepositoryPort;
+    private final ProductRepositoryService productRepositoryService;
 
     @Override
     public List<Product> getAllProducts() {
-        return productRepositoryPort.findAll();
+        return productRepositoryService.findAll();
     }
 
     @Override
     public Product getProductById(Long id) {
-        return productRepositoryPort.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
+        return productRepositoryService.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
     @Override
     public Product createProduct(Product product) {
-        return productRepositoryPort.save(product);
+        return productRepositoryService.save(product);
     }
 }
 
